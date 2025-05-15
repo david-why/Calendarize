@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24B91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ScheduledTaskMapping" representedClassName="ScheduledTaskMapping" syncable="YES" codeGenerationType="class">
+        <attribute name="calendarEventIdentifier" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderIdentifier" optional="YES" attributeType="String"/>
+        <fetchIndex name="reminderIdentifierIndex">
+            <fetchIndexElement property="reminderIdentifier" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="calendarEventIdentifierIndex">
+            <fetchIndexElement property="calendarEventIdentifier" type="Binary" order="ascending"/>
+        </fetchIndex>
+    </entity>
+</model>

@@ -1,0 +1,27 @@
+YourAppName/
+├── Data Layer/
+│   ├── Models/
+│   │   ├── ReminderModel.swift
+│   │   ├── CalendarEventModel.swift
+│   │   └── UserPreferences.swift
+│   ├── Repositories/
+│   │   ├── ReminderRepository.swift
+│   │   └── CalendarRepository.swift
+│   ├── CoreData/
+│   │   ├── IntelliScheduleDataModel.xcdatamodeld
+│   │   ├── CoreDataManager.swift
+│   │   ├── ScheduledTaskMapping+CoreDataClass.swift
+│   │   └── ScheduledTaskMapping+CoreDataProperties.swift
+│   └── ... (Other data-related files)
+├── ViewModel Layer/
+│   ├── SchedulerViewModel.swift
+│   ├── SettingsViewModel.swift
+│   └── ...
+├── View Layer/
+│   ├── ...
+├── Scheduling Logic/
+│   └── SchedulerService.swift
+├── Utilities/
+│   ├── ...
+├── YourAppNameApp.swift
+└── ...
