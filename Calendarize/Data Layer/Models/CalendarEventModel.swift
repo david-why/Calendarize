@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CalendarEventModel {
-    let identifier: String
-    let title: String
-    let startDate: Date
-    let endDate: Date
+struct CalendarEventModel: Identifiable {
+    let id: String
+    var title: String
+    var startDate: Date
+    var endDate: Date
     let isScheduledTask: Bool
     let originalReminderIdentifier: String? // Optional, to link back to your reminder
 }

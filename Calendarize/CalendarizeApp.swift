@@ -12,6 +12,7 @@ struct CalendarizeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(CalendarRepository())
         }
     }
 }

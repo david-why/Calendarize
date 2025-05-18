@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarTabView: View {
-    @State private var model = CalendarViewModel()
+    @State var model: CalendarViewModel
     
     var body: some View {
         NavigationStack {
@@ -16,20 +16,22 @@ struct CalendarTabView: View {
                 CalendarView(selectedDate: $model.selectedDate)
                     .frame(height: 400)
                     .padding(.horizontal)
-                ForEach(0..<40) { _ in
-                    Text("Test")
+                
+                if model.loadingEvents {
+                    ProgressView()
+                } else {
+                    ForEach(0..<40) { _ in
+                        Text("Test")
+                    }
                 }
             }
             .navigationTitle("\(model.selectedDate.formatted(date: .abbreviated, time: .omitted))")
         }
     }
-    
-    var calendarView: UICalendarView {
-        let calendarView = UICalendarView()
-        return calendarView
-    }
 }
 
 #Preview {
-    CalendarTabView()
+    let repository = CalendarRepository()
+    let viewModel = CalendarViewModel(calendarRepository: repository)
+    CalendarTabView(model: viewModel)
 }

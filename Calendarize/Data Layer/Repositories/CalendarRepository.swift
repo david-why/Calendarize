@@ -9,18 +9,13 @@ import Foundation
 import EventKit
 
 protocol CalendarRepositoryProtocol {
-    func fetchEvents(from startDate: Date, to endDate: Date) async throws -> [CalendarEventModel]
+    func fetchScheduledEvents(from startDate: Date, to endDate: Date) async throws -> [CalendarEventModel]
 }
 
-class CalendarRepository {
+@Observable
+class CalendarRepository: CalendarRepositoryProtocol {
     private let eventStore = EKEventStore()
-    let calendarTitle = "Calendarize"
-    
-    var preferences: UserPreferences
-    
-    init(preferences: UserPreferences) {
-        self.preferences = preferences
-    }
+    private let calendarTitle = "Calendarize"
     
     func fetchScheduledEvents(from startDate: Date, to endDate: Date) async throws -> [CalendarEventModel] {
         guard let taskCalendar = getTaskCalendar() else { return [] }
@@ -35,7 +30,7 @@ class CalendarRepository {
         return ekEvents.map { ekEvent in
             let reminderIdentifier = try? CoreDataManager.shared.fetchMapping(forCalendarEventIdentifier: ekEvent.eventIdentifier)?.reminderIdentifier
             return CalendarEventModel(
-                identifier: ekEvent.eventIdentifier,
+                id: ekEvent.eventIdentifier,
                 title: ekEvent.title,
                 startDate: ekEvent.startDate,
                 endDate: ekEvent.endDate,

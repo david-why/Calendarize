@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(CalendarRepository.self) var calendarRepository
+    
     var body: some View {
         TabView {
             Tab("Calendar", systemImage: "calendar") {
-                CalendarTabView()
+                CalendarTabView(model: CalendarViewModel(calendarRepository: calendarRepository))
             }
             Tab("Reminders", systemImage: "checklist") {
                 RemindersTabView()
@@ -25,4 +27,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(CalendarRepository())
 }
